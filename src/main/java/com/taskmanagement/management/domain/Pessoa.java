@@ -27,10 +27,10 @@ public class Pessoa {
 	private String nome;
 	
 	/************************************************************************
-	 * *CAMPOS ESTRANGEIROS
+	 * *OUTROS
 	 * **********************************************************************/
-	private Long departamento_id;
-	private Long task_list_id;
+	private Long departamentoId;
+	private Long taskListId;
 	
 	
 	public Pessoa() {
@@ -42,8 +42,8 @@ public class Pessoa {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.departamento_id = departamento_id;
-		this.task_list_id = task_list_id;
+		this.departamentoId = departamento_id;
+		this.taskListId = task_list_id;
 	}
 
 
@@ -66,24 +66,24 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-
-	public Long getDepartamento_id() {
-		return departamento_id;
+	
+	public Long getDepartamentoId() {
+		return departamentoId;
 	}
 
 
-	public void setDepartamento_id(Long departamento_id) {
-		this.departamento_id = departamento_id;
+	public void setDepartamentoId(Long departamentoId) {
+		this.departamentoId = departamentoId;
 	}
 
 
-	public Long getTask_list_id() {
-		return task_list_id;
+	public Long getTaskListId() {
+		return taskListId;
 	}
 
 
-	public void setTask_list_id(Long task_list_id) {
-		this.task_list_id = task_list_id;
+	public void setTaskListId(Long taskListId) {
+		this.taskListId = taskListId;
 	}
 
 
