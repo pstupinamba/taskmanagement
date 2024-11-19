@@ -34,7 +34,7 @@ public class TarefaController {
     }
     
     @PutMapping("/rsalocarpessoadep/{id}")
-    public ResponseEntity<Tarefa> alocarPessoaNaTarefa(@PathVariable Long id, @RequestBody Long pessoaId) {
+    public ResponseEntity<Tarefa> rsalocarpessoadep(@PathVariable Long id, @RequestBody Long pessoaId) {
         Tarefa tarefaAtualizada = tarefaService.alocarPessoaNaTarefa(id, pessoaId);
         return ResponseEntity.ok(tarefaAtualizada);
     }
@@ -43,6 +43,12 @@ public class TarefaController {
     public ResponseEntity<Tarefa> rsinsert(@RequestBody Tarefa tarefa) {
         Tarefa novaTarefa = tarefaService.salvar(tarefa);
         return ResponseEntity.ok(novaTarefa);
+    }
+    
+    @PutMapping("/rsfinalizar/{id}")
+    public ResponseEntity<Tarefa> rsfinalizar(@PathVariable Long id) {
+        Tarefa tarefaFinalizada = tarefaService.finalizarTarefa(id);
+        return ResponseEntity.ok(tarefaFinalizada);
     }
 }
 

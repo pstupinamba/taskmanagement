@@ -1,5 +1,6 @@
 package com.taskmanagement.management.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,13 @@ public class TarefaService {
         }
 
         tarefa.setPessoaAlocada(pessoa);
+        return tarefaRepository.save(tarefa);
+    }
+	
+	@Transactional
+    public Tarefa finalizarTarefa(Long tarefaId) {
+        Tarefa tarefa = tarefaRepository.findById(tarefaId).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+        tarefa.setFinalizado(true);
         return tarefaRepository.save(tarefa);
     }
 	
