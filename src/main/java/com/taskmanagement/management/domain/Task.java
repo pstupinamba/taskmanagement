@@ -31,18 +31,20 @@ public class Task {
 	
 	/************************************************************************
 	 * *OUTROS
-	 * **********************************************************************/
-	
-	@Column(name = "pessoa_alocada")
-    private Long pessoaAlocada; 
+	 * **********************************************************************/	
 
     private LocalDateTime dataRegistro;
-    private LocalDateTime dataPrazo;
-    private Long departamentoId;
+    private LocalDateTime dataPrazo;   
     private Long duracao;
+    
+    
+    /************************************************************************
+	 * *BOOLEANS
+	 * **********************************************************************/
 
     @Column(columnDefinition = "bit(1) NOT NULL DEFAULT FALSE")
     private boolean finalizado;
+    
 
     /************************************************************************
      * RELACIONAMENTOS ManyToOne
@@ -50,32 +52,38 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "pessoa_alocada", referencedColumnName = "id")
     private Pessoa pessoa;
+    
+    @ManyToOne
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id")
+    private Departamento departamento;
 	
     
     /************************************************************************
-     *
+     * 
      * **********************************************************************/
     
 	public Task() {
 		
 	}
-
-    /************************************************************************
-    *
-    * **********************************************************************/
-	public Task(Long id, String titulo, Long pessoaAlocada, LocalDateTime dataRegistro, LocalDateTime dataPrazo,
-			Long departamentoId, Long duracao, boolean finalizado, Pessoa pessoa) {
+	
+	
+	public Task(Long id, String titulo, LocalDateTime dataRegistro, LocalDateTime dataPrazo, Long duracao,
+			boolean finalizado, Pessoa pessoa, Departamento departamento) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.pessoaAlocada = pessoaAlocada;
 		this.dataRegistro = dataRegistro;
 		this.dataPrazo = dataPrazo;
-		this.departamentoId = departamentoId;
 		this.duracao = duracao;
 		this.finalizado = finalizado;
 		this.pessoa = pessoa;
+		this.departamento = departamento;
 	}
+
+
+	/************************************************************************
+    * GETTERS AND SETTERS
+    * **********************************************************************/
 
 
 	public Long getId() {
@@ -97,17 +105,6 @@ public class Task {
 		this.titulo = titulo;
 	}
 
-
-	public Long getPessoaAlocada() {
-		return pessoaAlocada;
-	}
-
-
-	public void setPessoaAlocada(Long pessoaAlocada) {
-		this.pessoaAlocada = pessoaAlocada;
-	}
-
-
 	public LocalDateTime getDataRegistro() {
 		return dataRegistro;
 	}
@@ -125,16 +122,6 @@ public class Task {
 
 	public void setDataPrazo(LocalDateTime dataPrazo) {
 		this.dataPrazo = dataPrazo;
-	}
-
-
-	public Long getDepartamentoId() {
-		return departamentoId;
-	}
-
-
-	public void setDepartamentoId(Long departamentoId) {
-		this.departamentoId = departamentoId;
 	}
 
 
@@ -157,7 +144,6 @@ public class Task {
 		this.finalizado = finalizado;
 	}
 
-
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -166,8 +152,16 @@ public class Task {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
-
 	
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
 	
 }
