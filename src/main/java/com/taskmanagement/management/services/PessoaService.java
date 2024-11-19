@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,45 @@ public class PessoaService {
 	public List<Pessoa> findAll(){
 		return pessoaRepository.findAll();
 	}
+
+	@Transactional(readOnly = true)
+    public Optional<Pessoa> buscarPorId(Long id) {
+        return pessoaRepository.findById(id);
+    }
+
+    @Transactional
+    public Pessoa salvar(Pessoa pessoa) {
+        return pessoaRepository.save(pessoa);
+    }
+
+    @Transactional
+    public Pessoa atualizar(Long id, Pessoa pessoaAtualizada) {
+        Pessoa pessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pessoa não encontrada!"));
+        pessoa.setNome(pessoaAtualizada.getNome());
+        pessoa.setDepartamento(pessoaAtualizada.getDepartamento());
+        return pessoaRepository.save(pessoa);
+    }
+
+    @Transactional
+    public void deletar(Long id) {
+        Pessoa pessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pessoa não encontrada!"));
+        pessoaRepository.delete(pessoa);
+    }
+    
+	@Transactional
+    public Tarefa alocarPessoaNaTarefa(Long tarefaId, Long pessoaId) {
+        Tarefa tarefa = tarefaRepository.findById(tarefaId).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+        Pessoa pessoa = pessoaRepository.findById(pessoaId).orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+
+        if (!tarefa.getDepartamento().equals(pessoa.getDepartamento())) {
+            throw new RuntimeException("A pessoa não pertence ao mesmo departamento da tarefa");
+        }
+
+        tarefa.setPessoaAlocada(pessoa);
+        return tarefaRepository.save(tarefa);
+    }
 	
 	@Transactional(readOnly = true)
 	public List<PessoaDTO> listTotalHoraTarefa() {
