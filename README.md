@@ -1,3 +1,2 @@
 # taskmanagement
-Gerenciador de tarefas (Pessoas)
-teste
+Gerenciador de tarefas
