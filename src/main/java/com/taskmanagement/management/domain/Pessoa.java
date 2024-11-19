@@ -32,7 +32,7 @@ public class Pessoa {
 	 * *OUTROS
 	 * **********************************************************************/
 	private Long departamentoId;
-	private Long taskListId;
+	private Long tarefaId;
 	
     /************************************************************************
      * RELACIONAMENTOS ManyToOne
@@ -50,12 +50,12 @@ public class Pessoa {
 		
 	}
 
-	public Pessoa(Long id, String nome, Long departamentoId, Long taskListId) {
+	public Pessoa(Long id, String nome, Long departamentoId, Long tarefaId) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.departamentoId = departamentoId;
-		this.taskListId = taskListId;
+		this.tarefaId = tarefaId;
 	}
 
 	/************************************************************************
@@ -97,12 +97,12 @@ public class Pessoa {
 		this.departamentoId = departamentoId;
 	}
 
-	public Long getTaskListId() {
-		return taskListId;
+	public Long getTarefaId() {
+		return tarefaId;
 	}
 
-	public void setTaskListId(Long taskListId) {
-		this.taskListId = taskListId;
+	public void setTarefaId(Long tarefaId) {
+		this.tarefaId = tarefaId;
 	}
 
 	/************************************************************************

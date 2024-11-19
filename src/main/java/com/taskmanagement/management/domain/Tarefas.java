@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "task")
-public class Task {
+public class Tarefas {
 	
 	/************************************************************************
 	 * *CAMPOS UNICOS
@@ -67,12 +67,12 @@ public class Task {
      * 
      * **********************************************************************/
     
-	public Task() {
+	public Tarefas() {
 		
 	}
 	
 
-	public Task(Long id, String titulo, LocalDateTime dataRegistro, LocalDateTime dataPrazo, Long duracao,
+	public Tarefas(Long id, String titulo, LocalDateTime dataRegistro, LocalDateTime dataPrazo, Long duracao,
 			boolean finalizado, Long pessoaAlocada, Long departamentoId) {
 		super();
 		this.id = id;
