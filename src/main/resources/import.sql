@@ -1,26 +1,29 @@
 -- INSERT DEPARTAMENTO
-INSERT INTO departamento (id, nome) VALUES (1, 'Desenvolvimento');
-INSERT INTO departamento (id, nome) VALUES (2, 'Marketing');
-INSERT INTO departamento (id, nome) VALUES (3, 'Recursos Humanos');
+INSERT INTO departamento (id, nome) VALUES
+(1, 'Financeiro'),
+(2, 'Comercial'),
+(3, 'Desenvolvimento');
 
 -- Inserir pessoas com departamento associado
-INSERT INTO pessoa (nome, departamento_id) VALUES ('Carlos Silva', 1); 
-INSERT INTO pessoa (nome, departamento_id) VALUES ('Ana Souza', 2);     
-INSERT INTO pessoa (nome, departamento_id) VALUES ('Bruna Costa', 3);   
-INSERT INTO pessoa (nome, departamento_id) VALUES ('Felipe Oliveira', 2);
-
--- Atualizando departamento para cada pessoa
-UPDATE pessoa SET departamento_id = 1 WHERE id = 1; -- Carlos Silva no Departamento de Desenvolvimento
-UPDATE pessoa SET departamento_id = 2 WHERE id = 2; -- Ana Souza no Departamento de Marketing
-UPDATE pessoa SET departamento_id = 3 WHERE id = 3; -- Bruna Costa no Departamento de RH
-UPDATE pessoa SET departamento_id = 1 WHERE id = 4; -- João Pereira no Departamento de Desenvolvimento
-UPDATE pessoa SET departamento_id = 2 WHERE id = 5; -- Felipe Oliveira no Departamento de Marketing
+INSERT INTO pessoa (id, nome, departamento_id) VALUES
+(1, 'Camila', 1),
+(2, 'Pedro', 2),
+(3, 'Fabiano', 3),
+(4, 'Raquel', 3),
+(5, 'Patricia', 3),
+(6, 'Joaquim', 1);
 
 
 -- EXECUTAR ESTE SEPARADO APÓS RODAR O SISTEMA
 -- INSERT TAREFAS
-INSERT INTO tarefa (titulo, descricao, data_registro, data_prazo, duracao, finalizado, pessoa_id, departamento_id)
-VALUES 
-('Desenvolver API', 'Desenvolver uma API para o sistema', '2024-11-01 09:00:00', '2024-11-10 18:00:00', 80, true, null, 1),  
-('Campanha de Natal', 'Criar e executar campanha de Natal', '2024-11-05 10:00:00', '2024-12-05 17:00:00', 50, false, null, 2), 
-('Recrutamento de pessoal', 'Recrutar pessoas para vaga de desenvolvedor', '2024-11-07 08:30:00', '2024-11-30 18:00:00', 60, false, null, 3);
+INSERT INTO tarefa (id, titulo, descricao, data_prazo, departamento_id, duracao, pessoa_id, finalizado, data_registro) VALUES
+(1001, 'Validar NF Janeiro', 'Validar notas recebidas no mês de Janeiro', '2022-02-15 17:00:00', 1, 14, 1, TRUE, '2022-01-01 08:30:00'),
+(1002, 'Bug 352', 'Corrigir bug 352 na versão 1.25', '2022-05-10 18:00:00', 3, 25, 3, FALSE, '2022-03-01 09:00:00'),
+(1003, 'Liberação da versão 1.24', 'Disponibilizar pacote para testes', '2022-02-02 16:00:00', 3, 2, NULL, TRUE, '2022-01-15 10:00:00'),
+(1004, 'Reunião A', 'Reunião com cliente A para apresentação do produto', '2022-02-05 15:00:00', 3, 5, 5, FALSE, '2022-01-20 14:30:00'),
+(1005, 'Reunião final', 'Fechamento contrato', '2022-03-28 12:00:00', 3, 10, NULL, FALSE, '2022-03-28 12:00:00'),
+(1006, 'Pagamento 01/2022', 'Realizar pagamento dos fornecedores', '2022-01-31 17:45:00', 1, 4, 1, TRUE, '2021-12-20 09:15:00'),
+(1007, 'Bug 401', 'Corrigir bug 401 na versão 1.20', '2022-02-01 14:00:00', 3, 6, NULL, TRUE, '2022-01-10 08:45:00'),
+(1008, 'Bug 399', 'Corrigir bug 399 na versão 1.20', '2022-01-28 17:30:00', 3, 5, NULL, FALSE, '2022-01-05 13:00:00'),
+(1009, 'Reunião B', 'Reunião com cliente B para apresentação do produto', '2022-01-30 15:30:00', 3, 10, 5, TRUE, '2022-01-15 10:00:00'),
+(1010, 'Validar NF Fevereiro', 'Validar notas recebidas no mês de Fevereiro', '2022-03-15 16:00:00', 1, 14, 6, FALSE, '2022-02-01 08:00:00')
