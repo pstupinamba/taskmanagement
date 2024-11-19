@@ -21,7 +21,7 @@ public class PessoaController {
 	@Autowired
 	private PessoaService pessoaService;
 	
-	@GetMapping
+	@GetMapping("/rsfindall")
 	public List<Pessoa> findAll(){
 		return pessoaService.findAll();
 	}

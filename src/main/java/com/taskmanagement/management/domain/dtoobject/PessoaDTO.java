@@ -1,8 +1,8 @@
 package com.taskmanagement.management.domain.dtoobject;
 
+import java.util.List;
 
 import com.taskmanagement.management.domain.Departamento;
-import com.taskmanagement.management.domain.Pessoa;
 import com.taskmanagement.management.domain.Tarefa;
 
 public class PessoaDTO {
@@ -10,7 +10,7 @@ public class PessoaDTO {
 	private Long id;
 	private String nome;
 	private Departamento departamento;
-	private Tarefa tarefas;
+	private List<Tarefa> tarefas;
 	private Long tarefaTotalHoras;
 	
  
@@ -19,7 +19,7 @@ public class PessoaDTO {
 	}
 
 
-	public PessoaDTO(Long id, String nome, Departamento departamento, Tarefa tarefas, Long tarefaTotalHoras) {
+	public PessoaDTO(Long id, String nome, Departamento departamento, List<Tarefa> tarefas, Long tarefaTotalHoras) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -59,16 +59,6 @@ public class PessoaDTO {
 	}
 
 
-	public Tarefa getTarefas() {
-		return tarefas;
-	}
-
-
-	public void setTarefas(Tarefa tarefas) {
-		this.tarefas = tarefas;
-	}
-
-
 	public Long getTarefaTotalHoras() {
 		return tarefaTotalHoras;
 	}
@@ -76,6 +66,16 @@ public class PessoaDTO {
 
 	public void setTarefaTotalHoras(Long tarefaTotalHoras) {
 		this.tarefaTotalHoras = tarefaTotalHoras;
+	}
+
+
+	public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
 	}
 
 

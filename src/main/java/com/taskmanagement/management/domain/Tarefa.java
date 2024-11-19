@@ -12,38 +12,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "tarefas")
+@Table(name= "tarefa")
 public class Tarefa {
 	
-	/************************************************************************
-	 * *CAMPOS UNICOS
-	 * **********************************************************************/
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	/************************************************************************
-	 * *CAMPOS PARTICULARES
-	 * **********************************************************************/
-
     private String titulo;
     private String descricao;
     private LocalDateTime dataRegistro;
-    private LocalDateTime prazo;
-    private Long duracao;
-    
-    
-    /************************************************************************
-	 * *BOOLEANS
-	 * **********************************************************************/
+    private LocalDateTime dataPrazo;
+    private Long duracao;  
 
     @Column(name = "finalizado", columnDefinition = "BOOLEAN NOT NULL DEFAULT FALSE")
-    private boolean finalizado;
-    
-
-    /************************************************************************
-     * RELACIONAMENTOS ManyToOne
-     * **********************************************************************/
+    private boolean finalizado;   
     
     @ManyToOne
     @JoinColumn(name = "departamento_id")
@@ -52,24 +36,21 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoaAlocada;
-	
     
-    /************************************************************************
-     * 
-     * **********************************************************************/
+	   
     
 	public Tarefa() {
 		
 	}
 
-	public Tarefa(Long id, String titulo, String descricao, LocalDateTime dataRegistro, LocalDateTime prazo,
+	public Tarefa(Long id, String titulo, String descricao, LocalDateTime dataRegistro, LocalDateTime dataPrazo,
 			Long duracao, boolean finalizado, Departamento departamento, Pessoa pessoaAlocada) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.dataRegistro = dataRegistro;
-		this.prazo = prazo;
+		this.dataPrazo = dataPrazo;
 		this.duracao = duracao;
 		this.finalizado = finalizado;
 		this.departamento = departamento;
@@ -112,14 +93,7 @@ public class Tarefa {
 	public void setDataRegistro(LocalDateTime dataRegistro) {
 		this.dataRegistro = dataRegistro;
 	}
-
-	public LocalDateTime getPrazo() {
-		return prazo;
-	}
-
-	public void setPrazo(LocalDateTime prazo) {
-		this.prazo = prazo;
-	}
+	
 
 	public Long getDuracao() {
 		return duracao;
@@ -151,6 +125,14 @@ public class Tarefa {
 
 	public void setPessoaAlocada(Pessoa pessoaAlocada) {
 		this.pessoaAlocada = pessoaAlocada;
+	}
+
+	public LocalDateTime getDataPrazo() {
+		return dataPrazo;
+	}
+
+	public void setDataPrazo(LocalDateTime dataPrazo) {
+		this.dataPrazo = dataPrazo;
 	}
 
 	

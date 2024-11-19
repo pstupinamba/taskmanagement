@@ -10,59 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name= "pessoa")
 public class Pessoa {
 	
-	/************************************************************************
-	 * *CAMPOS UNICOS
-	 * **********************************************************************/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	/************************************************************************
-	 * *CAMPOS PARTICULARES
-	 * **********************************************************************/
 	@Column(name = "nome")
 	private String nome;
-	
-	/************************************************************************
-	 * *OUTROS
-	 * **********************************************************************/
 
 	
-    /************************************************************************
-     * RELACIONAMENTOS ManyToOne
-     * **********************************************************************/
-	
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     private Departamento departamento;
-    
-    @OneToMany(mappedBy = "pessoaAlocada")
-    private List<Tarefa> tarefas;
 	
 	public Pessoa() {
 		
 	}
 
-	public Pessoa(Long id, String nome, Departamento departamento, List<Tarefa> tarefas) {
+	public Pessoa(Long id, String nome, Departamento departamento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.departamento = departamento;
-		this.tarefas = tarefas;
 	}
-
-
-
-	/************************************************************************
-	* GETTERS AND SETTERS
-	***********************************************************************/
 
 
 	public Long getId() {
@@ -94,17 +69,6 @@ public class Pessoa {
 		this.departamento = departamento;
 	}
 
-	public List<Tarefa> getTarefas() {
-		return tarefas;
-	}
-
-	public void setTarefas(List<Tarefa> tarefas) {
-		this.tarefas = tarefas;
-	}
-
-	/************************************************************************
-	* HASH AND EQUALS
-	***********************************************************************/
 	
 	@Override
 	public int hashCode() {
