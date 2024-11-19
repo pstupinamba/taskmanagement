@@ -1,5 +1,6 @@
 package com.taskmanagement.management.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,32 +33,32 @@ public class Pessoa {
 	/************************************************************************
 	 * *OUTROS
 	 * **********************************************************************/
-	private Long departamentoId;
-	private Long tarefaId;
+
 	
     /************************************************************************
      * RELACIONAMENTOS ManyToOne
      * **********************************************************************/
-	/*
+	
     @ManyToOne
     @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     private Departamento departamento;
     
-    @ManyToOne
-    @JoinColumn(name = "task_id", referencedColumnName = "id")
-    private Task task;*/
+    @OneToMany(mappedBy = "pessoaAlocada")
+    private List<Tarefa> tarefas;
 	
 	public Pessoa() {
 		
 	}
 
-	public Pessoa(Long id, String nome, Long departamentoId, Long tarefaId) {
+	public Pessoa(Long id, String nome, Departamento departamento, List<Tarefa> tarefas) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.departamentoId = departamentoId;
-		this.tarefaId = tarefaId;
+		this.departamento = departamento;
+		this.tarefas = tarefas;
 	}
+
+
 
 	/************************************************************************
 	* GETTERS AND SETTERS
@@ -68,11 +70,9 @@ public class Pessoa {
 	}
 
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 
 	public String getNome() {
@@ -80,29 +80,26 @@ public class Pessoa {
 	}
 
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 
-
-
-
-	public Long getDepartamentoId() {
-		return departamentoId;
+	public Departamento getDepartamento() {
+		return departamento;
 	}
 
-	public void setDepartamentoId(Long departamentoId) {
-		this.departamentoId = departamentoId;
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 
-	public Long getTarefaId() {
-		return tarefaId;
+	public List<Tarefa> getTarefas() {
+		return tarefas;
 	}
 
-	public void setTarefaId(Long tarefaId) {
-		this.tarefaId = tarefaId;
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
 	}
 
 	/************************************************************************
