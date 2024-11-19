@@ -25,9 +25,10 @@ public class Tarefa {
     private LocalDateTime dataRegistro;
     private LocalDateTime dataPrazo;
     private Long duracao;  
-
-    @Column(name = "finalizado", columnDefinition = "BOOLEAN NOT NULL DEFAULT FALSE")
-    private boolean finalizado;   
+    
+    @Column(name = "finalizado", columnDefinition = "BIT DEFAULT FALSE")
+    private boolean finalizado;
+  
     
     @ManyToOne
     @JoinColumn(name = "departamento_id")
