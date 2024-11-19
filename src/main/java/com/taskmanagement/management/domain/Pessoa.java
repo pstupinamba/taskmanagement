@@ -31,33 +31,32 @@ public class Pessoa {
 	/************************************************************************
 	 * *OUTROS
 	 * **********************************************************************/
+	private Long departamentoId;
+	private Long taskListId;
 	
     /************************************************************************
      * RELACIONAMENTOS ManyToOne
      * **********************************************************************/
-	
+	/*
     @ManyToOne
     @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     private Departamento departamento;
     
     @ManyToOne
     @JoinColumn(name = "task_id", referencedColumnName = "id")
-    private Task task;
+    private Task task;*/
 	
 	public Pessoa() {
 		
 	}
 
-
-
-	public Pessoa(Long id, String nome, Departamento departamento, Task task) {
+	public Pessoa(Long id, String nome, Long departamentoId, Long taskListId) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.departamento = departamento;
-		this.task = task;
+		this.departamentoId = departamentoId;
+		this.taskListId = taskListId;
 	}
-
 
 	/************************************************************************
 	* GETTERS AND SETTERS
@@ -88,28 +87,23 @@ public class Pessoa {
 
 
 
-	public Departamento getDepartamento() {
-		return departamento;
+
+
+	public Long getDepartamentoId() {
+		return departamentoId;
 	}
 
-
-
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+	public void setDepartamentoId(Long departamentoId) {
+		this.departamentoId = departamentoId;
 	}
 
-
-
-	public Task getTask() {
-		return task;
+	public Long getTaskListId() {
+		return taskListId;
 	}
 
-
-
-	public void setTask(Task task) {
-		this.task = task;
+	public void setTaskListId(Long taskListId) {
+		this.taskListId = taskListId;
 	}
-
 
 	/************************************************************************
 	* HASH AND EQUALS

@@ -42,13 +42,18 @@ public class Task {
 	 * *BOOLEANS
 	 * **********************************************************************/
 
-    @Column(columnDefinition = "bit(1) NOT NULL DEFAULT FALSE")
+    @Column(name = "finalizado", columnDefinition = "BOOLEAN NOT NULL DEFAULT FALSE")
     private boolean finalizado;
     
 
     /************************************************************************
      * RELACIONAMENTOS ManyToOne
      * **********************************************************************/
+    
+    private Long pessoaAlocada;
+    private Long departamentoId;
+    
+    /*
     @ManyToOne
     @JoinColumn(name = "pessoa_alocada", referencedColumnName = "id")
     private Pessoa pessoa;
@@ -56,7 +61,7 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     private Departamento departamento;
-	
+	*/
     
     /************************************************************************
      * 
@@ -66,9 +71,9 @@ public class Task {
 		
 	}
 	
-	
+
 	public Task(Long id, String titulo, LocalDateTime dataRegistro, LocalDateTime dataPrazo, Long duracao,
-			boolean finalizado, Pessoa pessoa, Departamento departamento) {
+			boolean finalizado, Long pessoaAlocada, Long departamentoId) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -76,8 +81,8 @@ public class Task {
 		this.dataPrazo = dataPrazo;
 		this.duracao = duracao;
 		this.finalizado = finalizado;
-		this.pessoa = pessoa;
-		this.departamento = departamento;
+		this.pessoaAlocada = pessoaAlocada;
+		this.departamentoId = departamentoId;
 	}
 
 
@@ -144,24 +149,26 @@ public class Task {
 		this.finalizado = finalizado;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+
+	public Long getPessoaAlocada() {
+		return pessoaAlocada;
 	}
 
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-	
-
-	public Departamento getDepartamento() {
-		return departamento;
+	public void setPessoaAlocada(Long pessoaAlocada) {
+		this.pessoaAlocada = pessoaAlocada;
 	}
 
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+	public Long getDepartamentoId() {
+		return departamentoId;
 	}
+
+
+	public void setDepartamentoId(Long departamentoId) {
+		this.departamentoId = departamentoId;
+	}
+
 
 	
 }
